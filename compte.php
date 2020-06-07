@@ -119,10 +119,12 @@ function login($pdo, $username, $password) {
                   
 
             $response->type=($is_admin ? "admin" : ($is_pharmacien ? "ph" : "user"));
+           // $response->type=($is_admin ? "admin" :($is_pharmacien ? "ph" : ($is_simple_user ? "user" : "aucun")));
         } else{
            
             $response->success=false;
             $response->message="User not exist";
+            $response->type="aucun";
         } 
 
         $response = json_encode($response);
