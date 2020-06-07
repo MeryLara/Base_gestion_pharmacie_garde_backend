@@ -46,7 +46,7 @@ function verifier($pdo,$username,$email){
     if(count($stmt->fetchAll()) > 0){
         $resp = new stdClass();
         $resp->success=false;
-        $resp->message="User exist dejat";
+        $resp->message="Utilisateur exist dejat";
 
         return $resp;
     }
@@ -156,12 +156,12 @@ function register($pdo,$username, $password, $nom, $prenom, $email ,$type ,$numT
             $stmt->execute(['person' => $idperson]);
          
         }
-        else if($type == "simpleUser"){
+        else if($type == "Utilisateur"){
             $stmt = $pdo->prepare("INSERT INTO simpleuser ( id_personne ) VALUES (:person )");
             $stmt->execute(['person' => $idperson]);
         }
         else{
-            echo "erreur il faut choisir un user";
+            echo "erreur il faut choisir un utilisateur";
         }
 
     }
@@ -179,7 +179,7 @@ function register($pdo,$username, $password, $nom, $prenom, $email ,$type ,$numT
         } else{
            
             $response->success=false;
-            $response->message="User not exist";
+            $response->message="utilisateur nexist pas !!";
         } 
 
         $response = json_encode($response);
